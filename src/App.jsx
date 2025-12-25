@@ -130,20 +130,20 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FAF9F5] via-[#F5F3ED] to-[#EAE7DC] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#FAF9F5] via-[#F5F3ED] to-[#EAE7DC] dark:from-[#1a1a1a] dark:via-[#2a2a2a] dark:to-[#1f1f1f] flex items-center justify-center p-4 transition-colors duration-300">
       <div className="w-full max-w-2xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent mb-3">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400 bg-clip-text text-transparent mb-3">
             画像をAPNGに変換
           </h1>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 dark:text-gray-300 text-lg">
             Grok編集を回避できる形式に変換します
           </p>
         </div>
 
         {/* Main Card */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 transition-all duration-300">
+        <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 transition-all duration-300">
           {status === 'idle' && (
             <div 
               onClick={() => fileInputRef.current?.click()}
@@ -156,14 +156,14 @@ function App() {
                 onChange={handleFileSelect}
                 className="hidden"
               />
-              <div className="border-3 border-dashed border-gray-300 rounded-2xl p-16 text-center transition-all duration-300 group-hover:border-gray-400 group-hover:bg-gray-50/50">
+              <div className="border-3 border-dashed border-gray-300 dark:border-gray-600 rounded-3xl p-16 text-center transition-all duration-300 group-hover:border-gray-400 dark:group-hover:border-gray-500 group-hover:bg-gray-50/50 dark:group-hover:bg-gray-700/30">
                 <div className="text-7xl mb-6 transition-transform duration-300 group-hover:scale-110">
                   📸
                 </div>
-                <p className="text-2xl font-semibold text-gray-800 mb-2">
+                <p className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
                   画像を選択
                 </p>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   JPEG, PNG, WebP, GIF, BMP, TIFF対応
                 </p>
               </div>
@@ -175,8 +175,8 @@ function App() {
               <div className="text-7xl mb-6 animate-spin inline-block">
                 🔄
               </div>
-              <p className="text-2xl font-semibold text-gray-800">変換中...</p>
-              <p className="text-sm text-gray-500 mt-2">少々お待ちください</p>
+              <p className="text-2xl font-semibold text-gray-800 dark:text-gray-100">変換中...</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">少々お待ちください</p>
             </div>
           )}
 
@@ -184,8 +184,8 @@ function App() {
             <div className="text-center">
               <div className="mb-8">
                 <div className="text-7xl mb-4 animate-bounce">✨</div>
-                <p className="text-3xl font-bold text-gray-800 mb-2">完成！</p>
-                <p className="text-lg text-gray-600">
+                <p className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">完成！</p>
+                <p className="text-lg text-gray-600 dark:text-gray-300">
                   {formatFileSize(fileSize)}
                 </p>
               </div>
@@ -193,20 +193,20 @@ function App() {
               <div className="space-y-3 mb-6">
                 <button
                   onClick={handleCopyToClipboard}
-                  className="w-full px-6 py-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+                  className="w-full px-6 py-5 bg-gradient-to-r from-blue-400 to-cyan-400 dark:from-blue-500 dark:to-cyan-500 hover:from-blue-500 hover:to-cyan-500 dark:hover:from-blue-600 dark:hover:to-cyan-600 text-white rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.02]"
                 >
                   📋 クリップボードにコピー
                 </button>
                 <button
                   onClick={handleDownload}
-                  className="w-full px-6 py-4 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+                  className="w-full px-6 py-5 bg-gradient-to-r from-purple-400 to-pink-400 dark:from-purple-500 dark:to-pink-500 hover:from-purple-500 hover:to-pink-500 dark:hover:from-purple-600 dark:hover:to-pink-600 text-white rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.02]"
                 >
                   💾 ダウンロード
                 </button>
                 {navigator.share && (
                   <button
                     onClick={handleShare}
-                    className="w-full px-6 py-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+                    className="w-full px-6 py-5 bg-gradient-to-r from-green-400 to-emerald-400 dark:from-green-500 dark:to-emerald-500 hover:from-green-500 hover:to-emerald-500 dark:hover:from-green-600 dark:hover:to-emerald-600 text-white rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.02]"
                   >
                     ↗️ 共有
                   </button>
@@ -215,7 +215,7 @@ function App() {
 
               <button
                 onClick={resetState}
-                className="text-gray-600 hover:text-gray-800 font-medium transition-colors"
+                className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100 font-medium transition-colors"
               >
                 ← 別の画像を変換
               </button>
@@ -225,10 +225,10 @@ function App() {
           {status === 'error' && (
             <div className="text-center py-16">
               <div className="text-7xl mb-6">❌</div>
-              <p className="text-2xl font-semibold text-red-600 mb-4">{errorMessage}</p>
+              <p className="text-2xl font-semibold text-red-600 dark:text-red-400 mb-4">{errorMessage}</p>
               <button
                 onClick={resetState}
-                className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-xl font-medium transition-colors"
+                className="px-8 py-4 bg-gradient-to-r from-orange-400 to-red-400 dark:from-orange-500 dark:to-red-500 hover:from-orange-500 hover:to-red-500 dark:hover:from-orange-600 dark:hover:to-red-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               >
                 もう一度試す
               </button>
@@ -237,7 +237,7 @@ function App() {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-6 text-sm text-gray-500">
+        <div className="text-center mt-6 text-sm text-gray-500 dark:text-gray-400">
           <p>画像は自動的に5MB以下に最適化されます</p>
         </div>
       </div>
